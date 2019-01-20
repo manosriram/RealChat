@@ -72,16 +72,11 @@ class Chat extends Component {
       socket.emit("released", "");
     });
 
-    // socket.on("typing", person => {
-    //   this.setState({ per: person });
-    //   feedback.innerHTML = `<p><strong>${
-    //     this.state.per
-    //   } is typing..</strong></p>`;
-    // });
-
-    socket.on("released", evnt => {
-      this.setState({ per: evnt });
-      feedback.innerHTML = `${this.state.per}`;
+    socket.on("typing", person => {
+      this.setState({ per: person });
+      feedback.innerHTML = `<p><strong>${
+        this.state.per
+      } is typing..</strong></p>`;
     });
   }
 
@@ -89,7 +84,8 @@ class Chat extends Component {
     return (
       <div>
         <h1>Hey from Chat.JS</h1>
-        <h3>{this.state.online} Users Online.</h3>
+        {this.state.online === 1 && <h3>{this.state.online} User Online</h3>}
+        {this.state.online > 1 && <h3>{this.state.online} Users Online</h3>}
         <div className="output" id="output" ref="output">
           {/* <div className="online" id="online"> */}
           {/* <h1>Online Users.</h1> */}
@@ -98,9 +94,7 @@ class Chat extends Component {
             })} */}
           {/* </div> */}
         </div>
-        <div className="feedback" id="feedback" ref="output">
-          {this.state.danger === 1 && <h3>Please Enter a Message!!</h3>}
-        </div>
+
         <br />
         <br />
         <div className="ui container">
@@ -114,12 +108,11 @@ class Chat extends Component {
               onChange={this.checkOnline}
             />
           </div>
-          <br />
-          <br />
-
           <button onClick={this.handleClick} className="ui black button">
             Send
           </button>
+          <br />
+          <br />
         </div>
       </div>
     );

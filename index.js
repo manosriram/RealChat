@@ -23,7 +23,6 @@ app.post("/", (req, res) => {
 });
 
 app.post("/getOnlineUsers", (req, res) => {
-  var name = req.body.name;
   res.json(users.length);
 });
 
@@ -52,20 +51,14 @@ io.on("connection", socket => {
   connection.push(socket.id);
   console.log(connection);
   console.log(users);
-  //   console.log(io.nsps);
-  //   console.log(connection);
   var latestUser = users[users.length - 1];
 
   socket.on("chat", data => {
     io.sockets.emit("chat", data);
   });
 
-  // socket.on("typing", data => {
-  //   socket.broadcast.emit("typing", data);
-  // });
-
-  socket.on("released", data => {
-    socket.broadcast.emit("released", data);
+  socket.on("typing", data => {
+    socket.broadcast.emit("typing", data);
   });
 
   socket.on("disconnect", function() {
