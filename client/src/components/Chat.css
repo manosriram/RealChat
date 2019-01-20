@@ -1,0 +1,24 @@
+* {
+  text-align: center;
+}
+#output {
+  height: 500px;
+  width: auto;
+  text-align: left;
+  border: 3px solid black;
+}
+#online {
+  float: left;
+  height: 500px;
+  width: 20%;
+  text-align: left;
+  border: 3px solid red;
+}
+
+::placeholder {
+  color: black;
+}
+
+#message {
+  width: 300px;
+}
