@@ -48,15 +48,15 @@ class App extends Component {
             <br />
             <br />
 
-            <div class="ui animated button" tabindex="0">
+            {/* <div class="ui animated button" tabindex="0">
               <div class="visible content">Go</div>
               <div class="hidden content">
                 <i class="right arrow icon" onClick={this.handleClick} />
               </div>
-            </div>
-            {/* <button className="ui black button" onClick={this.handleClick}>
+            </div> */}
+            <button className="ui black button" onClick={this.handleClick}>
               Go
-            </button> */}
+            </button>
           </div>
         </div>
       );

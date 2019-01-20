@@ -25,7 +25,6 @@ class Chat extends Component {
 
   handleClick() {
     let feedback = document.getElementById("feedback");
-    feedback.innerHTML = "";
     if (this.refs.message.value != "") {
       this.setState({ danger: 0 });
       socket.emit("chat", {
@@ -72,14 +71,14 @@ class Chat extends Component {
       socket.emit("released", "");
     });
 
-    socket.on("typing", person => {
-      this.setState({ per: person });
-      feedback.innerHTML = `<p><strong>${
-        this.state.per
-      } is typing..</strong></p>`;
-    });
+    //   socket.on("typing", person => {
+    //     this.setState({ per: person });
+    //     feedback.innerHTML = `<p><strong>${
+    //       this.state.per
+    //     } is typing..</strong></p>`;
+    //   });
+    // }
   }
-
   render() {
     return (
       <div>
@@ -108,11 +107,11 @@ class Chat extends Component {
               onChange={this.checkOnline}
             />
           </div>
+          <br />
+          <br />
           <button onClick={this.handleClick} className="ui black button">
             Send
           </button>
-          <br />
-          <br />
         </div>
       </div>
     );
